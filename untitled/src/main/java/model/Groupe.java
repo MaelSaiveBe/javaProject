@@ -4,14 +4,10 @@ import java.util.ArrayList;
 
 public class Groupe {
     private String nom;
-    private ArrayList<Artiste> membres;
+    private ArrayList<String> membres;
 
-    public Groupe(String nom, ArrayList <Artiste> membres) {
+    public Groupe(String nom,ArrayList<String> membres1) {
         this.nom = nom;
-        for(Artiste artiste : membres) {
-            this.membres.add(artiste);
-        }
-
-
+        this.membres = membres1;
     }
 }
