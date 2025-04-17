@@ -10,4 +10,6 @@ public class Groupe {
         this.nom = nom;
         this.membres = membres1;
     }
+
+
 }
