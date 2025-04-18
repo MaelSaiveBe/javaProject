@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="model.MorceauTest" time="0.023" tests="9" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="model.GroupeTest" time="0.007" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -60,49 +60,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="getId" classname="model.MorceauTest" time="0.009">
-    <system-out><![CDATA[Morceau time: hash 1606304070 id 64
-Morceau money: hash 9190301 id 65
-]]></system-out>
-  </testcase>
-  <testcase name="getMinute" classname="model.MorceauTest" time="0.001">
-    <system-out><![CDATA[Morceau time: hash 1278852808 id 66
-Morceau money: hash 63390 id 67
-]]></system-out>
-  </testcase>
-  <testcase name="getSecond" classname="model.MorceauTest" time="0.001">
-    <system-out><![CDATA[Morceau time: hash 2129144075 id 69
-Morceau money: hash 525968792 id 70
-]]></system-out>
-  </testcase>
-  <testcase name="testEquals" classname="model.MorceauTest" time="0.001">
-    <system-out><![CDATA[Morceau time: hash 504858437 id 71
-Morceau money: hash 422330142 id 72
-]]></system-out>
-  </testcase>
-  <testcase name="setDuree" classname="model.MorceauTest" time="0.002">
-    <system-out><![CDATA[Morceau time: hash 649329985 id 75
-Morceau money: hash 1955920234 id 76
-]]></system-out>
-  </testcase>
-  <testcase name="setTitre" classname="model.MorceauTest" time="0.001">
-    <system-out><![CDATA[Morceau time: hash 1444635922 id 78
-Morceau money: hash 775386112 id 79
-]]></system-out>
-  </testcase>
-  <testcase name="getDuree" classname="model.MorceauTest" time="0.0">
-    <system-out><![CDATA[Morceau time: hash 391630194 id 81
-Morceau money: hash 1146825051 id 82
-]]></system-out>
-  </testcase>
-  <testcase name="getTitre" classname="model.MorceauTest" time="0.001">
-    <system-out><![CDATA[Morceau time: hash 1239807799 id 83
-Morceau money: hash 1550261631 id 84
-]]></system-out>
-  </testcase>
-  <testcase name="dureeToString" classname="model.MorceauTest" time="0.002">
-    <system-out><![CDATA[Morceau time: hash 1970436060 id 85
-Morceau money: hash 1753127384 id 86
-]]></system-out>
-  </testcase>
+  <testcase name="getNom" classname="model.GroupeTest" time="0.001"/>
+  <testcase name="setNom" classname="model.GroupeTest" time="0.001"/>
+  <testcase name="setMembres" classname="model.GroupeTest" time="0.001"/>
+  <testcase name="getMembres" classname="model.GroupeTest" time="0.0"/>
 </testsuite>
