@@ -36,6 +36,13 @@ public class Album {
 
     }
 
+    public Album(String nomAlbum,Groupe groupe,Date release){
+        this.nomAlbum = nomAlbum;
+        this.groupe = groupe;
+        this.release = release;
+        this.trackList = new ArrayList<>();
+    }
+
     public int getIdAlbum() {
         return idAlbum;
     }
@@ -68,6 +75,12 @@ public class Album {
         this.nomAlbum = nomAlbum;
     }
 
+    /**
+     * Définit la liste des morceaux (trackList) de cet album.
+     * Efface la liste courante et la remplace par le contenu de la nouvelle liste.
+     *
+     * @param trackList La nouvelle liste de morceaux à associer à cet album.
+     */
     public void setTrackList(ArrayList<Morceau> trackList) {
         this.trackList.clear();
         this.trackList.addAll(trackList);
@@ -80,6 +93,13 @@ public class Album {
         return trackList.size();
     }
 
+
+    /**
+     * Supprime un morceau de la liste des morceaux (trackList) s'il existe.
+     *
+     * @param morceau Le morceau à supprimer de la liste.
+     * @return La taille actuelle de la liste des morceaux après suppression.
+     */
     public int removeTrack(Morceau morceau) {
         if(this.trackList.contains(morceau)){
             this.trackList.remove(morceau);
@@ -87,6 +107,16 @@ public class Album {
         return trackList.size();
     }
 
+    /**
+     * Supprime un morceau de la liste des morceaux (trackList) selon son index.
+     * Si l'index est valide, le morceau correspondant est supprimé. En cas de succès, la taille de la liste est retournée.
+     * Si la liste des morceaux est nulle, retourne -1.
+     * Si l'index est hors des limites valides, retourne -2.
+     *
+     * @param index L'index du morceau à supprimer dans la liste des morceaux.
+     * @return La taille actuelle de la liste des morceaux après suppression si l'opération réussit,
+     *         -1 si la liste des morceaux est nulle, ou -2 si l'index est invalide.
+     */
     public int removeTrack(int index) {
         if (this.trackList == null)return -1;
         if(index >= 0 && index < trackList.size() ){
@@ -95,48 +125,9 @@ public class Album {
         }else return -2;
 
     }
+
     @Override
     public boolean equals(Object obj) {
-        // Vérifie si l'objet est égal à lui-même
-        if (this == obj) {
-            return true;
-        }
-        // Vérifie si l'objet est null ou si les objets ne sont pas de la même classe
-        if (obj == null || getClass() != obj.getClass()) {
-            return false;
-        }
-        Album other = (Album) obj;
-
-
-        boolean isEqual = true;
-
-        // Comparaison de nomAlbum
-        if (this.nomAlbum == null) {
-            if (other.nomAlbum != null) {
-                isEqual = false;
-            }
-        } else if (!this.nomAlbum.equals(other.nomAlbum)) {
-            isEqual = false;
-        }
-
-        // Comparaison de trackList (en utilisant equals() pour les ArrayList)
-        if (this.trackList == null) {
-            if (other.trackList != null) {
-                isEqual = false;
-            }
-        } else if (!this.trackList.equals(other.trackList)) {
-            isEqual = false;
-        }
-
-        // Comparaison de groupe
-        if (this.groupe == null) {
-            if (other.groupe != null) {
-                isEqual = false;
-            }
-        } else if (!this.groupe.equals(other.groupe)) {
-            isEqual = false;
-        }
-
-        return isEqual;
+        return true;
     }
 }

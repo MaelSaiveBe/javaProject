@@ -49,6 +49,14 @@ public class Morceau {
         return duree % 60;
     }
 
+    /**
+     * Vérifie l'égalité entre cet objet Morceau et un autre objet.
+     * Deux objets Morceau sont considérés comme égaux s'ils ont la même durée (duree)
+     * et le même titre (titre).
+     *
+     * @param obj L'objet à comparer avec cet objet.
+     * @return true si les deux objets sont égaux, sinon false.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
