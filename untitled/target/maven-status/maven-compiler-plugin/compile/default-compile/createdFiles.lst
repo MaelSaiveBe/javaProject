@@ -1,0 +1,8 @@
+model\Main.class
+view\ConfirmConnection.class
+model\Groupe.class
+model\Morceau.class
+view\FenetrePrincipale.class
+model\Album.class
+model\User.class
+model\Artiste.class
