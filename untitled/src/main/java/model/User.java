@@ -28,4 +28,12 @@ public class User {
         if(collection.add(album)) return 1;
         else return 0;
     }
+
+    public int removeAlbum(Album album) {
+        if (album == null) return -1;
+        if(collection.remove(album)) return 1;
+        else return 0;
+    }
+
+
 }

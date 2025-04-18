@@ -6,7 +6,7 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class JDialogAjoutChanson extends JDialog{
+public class JDialogAjoutMorceau extends JDialog{
     private JPanel MainPanel;
     private JLabel titreMorceau;
     private JTextField tfTitreMorceau;
@@ -15,8 +15,8 @@ public class JDialogAjoutChanson extends JDialog{
     private JButton btnMoreceauValider;
     private JButton btnMorceauAnnuler;
 
-    public JDialogAjoutChanson(JFrame parent, boolean modal) {
-//        super(parent, modal);
+    public JDialogAjoutMorceau(JFrame parent, boolean modal) {
+        super(parent, modal);
         setLocationRelativeTo(null);
         setContentPane(MainPanel);
         pack();
@@ -44,7 +44,7 @@ public class JDialogAjoutChanson extends JDialog{
         } catch (Exception e) {
             System.err.println("Erreur lors du chargement du thème FlatLaf");
         }
-        JDialogAjoutChanson dialog = new JDialogAjoutChanson(null, true);
+        JDialogAjoutMorceau dialog = new JDialogAjoutMorceau(null, true);
         dialog.setVisible(true);
 
 
