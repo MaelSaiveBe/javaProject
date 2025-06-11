@@ -1,4 +1,4 @@
-package view;
+package view.Model;
 
 import model.Album;
 import model.Groupe;

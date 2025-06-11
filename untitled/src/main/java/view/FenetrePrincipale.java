@@ -1,10 +1,14 @@
 package view;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
+import model.Album;
+import model.Morceau;
+import view.Model.AlbumTableModel;
 
 import javax.swing.*;
+import java.util.ArrayList;
 
-public class FenetrePrincipale extends JFrame {
+public class FenetrePrincipale extends JFrame implements ViewCollection {
     private JPanel modelFenetrePrincipale;
     private JTextField nomDUtilisateurTextField;
     private JTable jtAlbums;
@@ -37,10 +41,57 @@ public class FenetrePrincipale extends JFrame {
     }
 
     private void jtAlbumsList() {
-        jtAlbums.setModel(new javax.swing.table.DefaultTableModel(
-                new Object[][]{},
-                new String[]{"Groupe", "Titre", "Release"}
-        ));
+        ArrayList<Album> albums = new ArrayList<>();
+        jtAlbums.setModel(new AlbumTableModel(albums));
+    }
+
+    @Override
+    public void displayCollectionAlbums(ArrayList<Album> Collection) {
+
+    }
+
+    @Override
+    public void displayCollectionMorceaux(ArrayList<String> Collection) {
+
+    }
+
+    @Override
+    public Morceau promptForNewMorceau() {
+        JDialogAjoutMorceau JdialogAjoutMorceau = new JDialogAjoutMorceau(this, true);
+        JdialogAjoutMorceau.setVisible(true);
+        Morceau morceau = JdialogAjoutMorceau.getMorceau();
+
+        return ;
+    }
+
+    @Override
+    public Morceau promptForUpdateMorceau(String morceau) {
+        return ;
+    }
+
+    @Override
+    public Integer promptForMorceauId() {
+        return 0;
+    }
+
+    @Override
+    public Integer promptForAlbumId() {
+        return 0;
+    }
+
+    @Override
+    public Album promptForNewAlbum() {
+        return null;
+    }
+
+    @Override
+    public Album promptForUpdateAlbum(Album album) {
+        return null;
+    }
+
+    @Override
+    public void showMessage(String message) {
+
     }
 }
 

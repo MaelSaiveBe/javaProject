@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Album {
-   private static int cpt = 0;
     private int idAlbum;
     private String nomAlbum;
     private ArrayList<Morceau> trackList;
@@ -17,7 +16,7 @@ public class Album {
     public Album(String nomAlbum,
                  ArrayList<Morceau> trackList, Groupe groupe,
                  Date release) {
-        this.idAlbum = ++cpt;
+        this.idAlbum = -1; // Default value, can be set later
         this.nomAlbum = nomAlbum;
         this.trackList = trackList != null ? trackList : new ArrayList<>();
         this.groupe = groupe;
@@ -26,7 +25,7 @@ public class Album {
 
     public Album(Album albumTest)
     {
-
+        this.idAlbum = albumTest.getIdAlbum();
         this.nomAlbum = albumTest.getNomAlbum();
         this.trackList = trackList != null ? trackList : new ArrayList<>();
         this.trackList.clear();
@@ -37,6 +36,7 @@ public class Album {
     }
 
     public Album(String nomAlbum,Groupe groupe,Date release){
+        this.idAlbum = -1;
         this.nomAlbum = nomAlbum;
         this.groupe = groupe;
         this.release = release;
@@ -46,6 +46,8 @@ public class Album {
     public int getIdAlbum() {
         return idAlbum;
     }
+
+    public void setIdAlbum(int idAlbum) {this.idAlbum = idAlbum;}
 
     public String getNomAlbum() {
         return nomAlbum;
@@ -145,6 +147,6 @@ public class Album {
         Album other = (Album) obj;
         return this.nomAlbum.equals(other.nomAlbum) && this.trackList.equals(other.trackList);
 
-        //TODO
+        //TODO toString()
     }
 }

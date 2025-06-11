@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.*;
 import com.formdev.flatlaf.FlatDarculaLaf;
+import model.Morceau;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,6 +15,8 @@ public class JDialogAjoutMorceau extends JDialog{
     private JTextField tfDureeMorceau;
     private JButton btnMoreceauValider;
     private JButton btnMorceauAnnuler;
+
+    private Morceau morceauAjouter;
 
     public JDialogAjoutMorceau(JFrame parent, boolean modal) {
         super(parent, modal);
@@ -48,5 +51,9 @@ public class JDialogAjoutMorceau extends JDialog{
         dialog.setVisible(true);
 
 
+    }
+
+    public Morceau getMorceau() {
+        return morceauAjouter;
     }
 }
