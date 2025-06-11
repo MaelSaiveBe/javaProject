@@ -75,6 +75,17 @@ public class Album {
         this.nomAlbum = nomAlbum;
     }
 
+    public int getYear() {
+        return release.getYear() + 1900; // getYear() returns year since 1900
+    }
+
+    public int getMonth() {
+        return release.getMonth() + 1; // getMonth() returns month from 0 to 11
+    }
+    public int getDay() {
+        return release.getDate(); // getDate() returns day of the month
+    }
+
     /**
      * Définit la liste des morceaux (trackList) de cet album.
      * Efface la liste courante et la remplace par le contenu de la nouvelle liste.

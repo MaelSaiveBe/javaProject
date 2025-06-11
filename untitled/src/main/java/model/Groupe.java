@@ -11,6 +11,11 @@ public class Groupe {
         this.membres = membres1;
     }
 
+    public Groupe(String value) {
+        this.nom = value;
+        this.membres = new ArrayList<>();
+    }
+
     public String getNom() {
         return nom;
     }
