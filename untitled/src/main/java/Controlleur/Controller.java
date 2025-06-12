@@ -9,6 +9,7 @@ import view.FenetrePrincipale;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 public final class Controller extends ControllerActions implements ActionListener {
 
@@ -28,9 +29,10 @@ public final class Controller extends ControllerActions implements ActionListene
     }
     @Override
     public void actionPerformed(java.awt.event.ActionEvent e) {
-        if (e.getActionCommand() ==  ADD_ALBUM) {
+        if (Objects.equals(e.getActionCommand(), ADD_ALBUM)) {
             System.out.println("Action Add Album");
             Album album = frame.promptForNewAlbum();
+            System.out.println("Album : " + album);
             if (album != null) {
                 dao.addAlbum(album);
                 //test a ma sauce si sa casse c'est ptetre ici-------------------------------------------------------------------------
@@ -43,7 +45,7 @@ public final class Controller extends ControllerActions implements ActionListene
                 frame.showMessage("Ajout effectué avec succès !");
             }
         }
-        if(e.getActionCommand() == ADD_MORCEAU) {
+        if(Objects.equals(e.getActionCommand(), ADD_MORCEAU)) {
             System.out.println("Action Add Morceau");
 
             Morceau morceau = frame.promptForNewMorceau();

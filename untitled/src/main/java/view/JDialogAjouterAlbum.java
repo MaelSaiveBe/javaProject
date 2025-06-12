@@ -56,6 +56,7 @@ public class JDialogAjouterAlbum extends JDialog {
                 albumAjouter.setNomAlbum(titre);
                 albumAjouter.setGroupe(groupe);
                 albumAjouter.setRelease(day, month, year);
+                dispose();
             }
 
         });
