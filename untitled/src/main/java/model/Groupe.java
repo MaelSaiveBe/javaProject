@@ -39,6 +39,17 @@ public class Groupe {
         this.membres = membres;
     }
 
+    public String getMembreToString() {
+        StringBuilder sb = new StringBuilder();
+        for (String membre : membres) {
+            sb.append(membre).append(", ");
+        }
+//        if (sb.length() > 0) {
+//            sb.setLength(sb.length() - 2); // Enlève la dernière virgule et l'espace
+//        }
+        return sb.toString();
+    }
+
     /**
      * Vérifie si deux objets de type Groupe sont égaux. Deux groupes sont considérés
      * comme égaux s'ils ont le même nom et les mêmes membres.
@@ -49,4 +60,14 @@ public class Groupe {
     public boolean equals(Groupe groupe) {
         return this.nom.equals(groupe.getNom())&&this.membres.equals(groupe.getMembres());
     }
+
+    @Override
+    public String toString() {
+        return "Groupe{" +
+                "nom='" + nom + '\'' +
+                ", membres=" + membres +
+                '}';
+    }
+
+
 }

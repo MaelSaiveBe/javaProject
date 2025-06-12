@@ -6,22 +6,21 @@ import model.AlbumDao;
 import model.DataAccessLayer;
 import model.Morceau;
 import view.FenetrePrincipale;
+import view.Model.AlbumTableModel;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
-public final class Controller extends ControllerActions implements ActionListener {
+public final class Controller extends ControllerActions implements ActionListener,
+        TableModelListener {
 
     private FenetrePrincipale frame;
     private AlbumDao dao;
 
     public Controller(FenetrePrincipale frame, AlbumDao model) {
-        try{
-            UIManager.setLookAndFeel(new FlatDarculaLaf());
-        } catch (Exception e) {
-            System.err.println("Erreur lors du chargement du thème FlatLaf");
-        }
         this.frame = frame;
         dao = model;
         this.frame.setController(this);
@@ -38,11 +37,12 @@ public final class Controller extends ControllerActions implements ActionListene
                 //test a ma sauce si sa casse c'est ptetre ici-------------------------------------------------------------------------
                 //-----------------------------------------------------------------------------------------------------------------------
                 //-----------------------------------------------------------------------------------------------------------------------
-                //-----------------------------------------------------------------------------------------------------------------------
+                //--------/!\/!\/!\/!\-------Spoiler j'ai tout cassé-----/!\/!\/!\/!\-----------------------------------------------------
                 //-----------------------------------------------------------------------------------------------------------------------
                 //-----------------------------------------------------------------------------------------------------------------------
                 frame.displayCollectionAlbums(dao.getCollection());
-                frame.showMessage("Ajout effectué avec succès !");
+                frame.setController(this);
+                //frame.showMessage("Ajout effectué avec succès !");
             }
         }
         if(Objects.equals(e.getActionCommand(), ADD_MORCEAU)) {
@@ -63,5 +63,31 @@ public final class Controller extends ControllerActions implements ActionListene
 
     public void run() {
         frame.run();
+    }
+
+    public void updateAlbum(Album a) {
+        if (dao.updateAlbum(a)) {
+            frame.displayCollectionAlbums(dao.getCollection());
+            frame.setController(this);
+            frame.showMessage("Modification effectuée avec succès !");
+        } else {
+            frame.showMessage("Erreur de modification...");
+        }
+        for (Album alb : dao.getCollection()) {
+            System.out.println(alb);
+        }
+    }
+
+    @Override
+    public void tableChanged(TableModelEvent e) {
+        System.out.println("Table changed: "
+        );
+        if (e.getType() == TableModelEvent.UPDATE && e.getFirstRow() == e.getLastRow()) {
+            int row = e.getFirstRow();
+            AlbumTableModel model = (AlbumTableModel) frame.getJtAlbums().getModel();
+            Album album = model.getAlbumAt(row);
+            updateAlbum(album);
+            System.out.println("Album : " + album);
+        }
     }
 }

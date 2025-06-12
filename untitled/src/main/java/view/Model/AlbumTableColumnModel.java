@@ -6,7 +6,7 @@ import javax.swing.table.TableColumn;
 public class AlbumTableColumnModel extends DefaultTableColumnModel {
     public AlbumTableColumnModel() {
         super();
-        int[] taillesColonnes = {10, 100, 50, 50, 50};
+        int[] taillesColonnes = {10, 80, 80, 80, 50};
         String[] nomsColonnes = {"Id", "Titre", "Groupe", "Membres", "Date"};
 
         for (int i = 0; i < taillesColonnes.length; i++) {

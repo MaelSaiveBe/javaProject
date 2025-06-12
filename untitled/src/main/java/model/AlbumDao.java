@@ -7,12 +7,23 @@ public class AlbumDao implements DataAccessLayer {
     private ArrayList<Album> collection;
     private static int LastId = 0;
 
+    public AlbumDao() {
+        collection = new ArrayList<>();
+    }
 
     @Override
     public int addAlbum(Album album) {
         if (album == null) return -1;
-        album.setIdAlbum(++LastId);
+        System.out.println(LastId);
+        LastId++;
+        System.out.println(LastId);
+        album.setIdAlbum(LastId);
+        System.out.println("id = "+ album.getIdAlbum());
         collection.add(album);
+        System.out.println("Albums in collection: " + collection.size());
+        for(Album a : collection) {
+            System.out.println("Album ID: " + a.getIdAlbum() + ", Name: " + a.getNomAlbum());
+        }
         return album.getIdAlbum();
     }
 
@@ -26,6 +37,8 @@ public class AlbumDao implements DataAccessLayer {
         }
         return false;
     }
+
+
 
     @Override
     public boolean deleteAlbum(int id) {

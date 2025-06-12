@@ -3,11 +3,14 @@ package view;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import model.Album;
 import model.Morceau;
+import view.Model.AlbumTableColumnModel;
 import view.Model.AlbumTableModel;
 import view.Model.MorceauTableColoumnModel;
 import view.Model.MorceauTableModel;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.util.ArrayList;
 
 public class FenetrePrincipale extends JFrame implements ViewCollection {
@@ -21,13 +24,31 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
     private JButton btnSupprimerAlbum;
 
     public FenetrePrincipale(){
-        setTitle("Fenetre Principale");
+//        setTitle("Fenetre Principale");
+//        setContentPane(modelFenetrePrincipale);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setLocationRelativeTo(null);
+//        setVisible(true);
+//        jtAlbumsList();
+//        pack();
+
+        super("Fenetre Principale");
         setContentPane(modelFenetrePrincipale);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(500,500);
+        //place la fenetre au centre a l'éxecution(Comportement par défaut fait apparaite dans le
+        //                                                                  coin suppérieur gauche)
         setLocationRelativeTo(null);
-        setVisible(true);
-        jtAlbumsList();
-        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //inutile ici car le text était deja hard codé dans le .form
+        btnAjoutMorceau.setText(Controlleur.ControllerActions.ADD_MORCEAU);
+        btnAjouterAlbum.setText(Controlleur.ControllerActions.ADD_ALBUM);
+        btnSupprimerMorceau.setText(Controlleur.ControllerActions.DELETE_MORCEAU);
+        btnSupprimerAlbum.setText(Controlleur.ControllerActions.DELETE_ALBUM);
+
+        jtAlbums.setModel(new AlbumTableModel(new ArrayList<>()));
+        jtAlbums.setColumnModel(new AlbumTableColumnModel());
+        jtAlbums.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     public static void main(String[] args){
         try{
@@ -41,15 +62,21 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
 //        System.out.println("authentification via map réussie?" + isAuthenticatedWithMap);
 
     }
+// Relique du passé, ne sert plus à rien
+//    private void jtAlbumsList() {
+//        ArrayList<Album> albums = new ArrayList<>();
+//        jtAlbums.setModel(new AlbumTableModel(albums));
+//        jtAlbums.setColumnModel(new AlbumTableColumnModel());
+//    }
 
-    private void jtAlbumsList() {
-        ArrayList<Album> albums = new ArrayList<>();
-        jtAlbums.setModel(new AlbumTableModel(albums));
+    public JTable getJtAlbums() {
+        return jtAlbums;
     }
 
     @Override
     public void displayCollectionAlbums(ArrayList<Album> Collection) {
-
+        jtAlbums.setModel(new AlbumTableModel(Collection));
+        jtAlbums.setColumnModel(new AlbumTableColumnModel());
     }
 
     @Override
@@ -92,6 +119,7 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         JDialogAjouterAlbum dialog = new JDialogAjouterAlbum(this, true);
         dialog.setVisible(true);
         Album album = dialog.getAlbum();
+        System.out.println(album);
         dialog.dispose();
        return album;
     }
@@ -110,6 +138,9 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         btnAjoutMorceau.addActionListener(c);
         btnSupprimerAlbum.addActionListener(c);
         btnSupprimerMorceau.addActionListener(c);
+        jtAlbums.getModel().addTableModelListener(c);
+        System.out.println("Ajout du TableModelListener : " + c);
+
     }
 
     @Override

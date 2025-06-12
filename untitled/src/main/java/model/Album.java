@@ -103,6 +103,10 @@ public class Album {
         return release.getDate(); // getDate() returns day of the month
     }
 
+    public String getReleaseString() {
+        return String.format("%02d/%02d/%04d", getDay(), getMonth(), getYear());
+    }
+
     /**
      * Définit la liste des morceaux (trackList) de cet album.
      * Efface la liste courante et la remplace par le contenu de la nouvelle liste.
@@ -165,6 +169,16 @@ public class Album {
         //TODO toString()
     }
 
+    @Override
+    public String toString() {
+        return "Album{" +
+                "idAlbum=" + idAlbum +
+                ", nomAlbum='" + nomAlbum + '\'' +
+                ", trackList=" + trackList +
+                ", groupe=" + groupe +
+                ", release=" + release +
+                '}';
+    }
     public Integer getId() {
         return this.idAlbum;
     }

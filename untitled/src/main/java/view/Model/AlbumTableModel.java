@@ -1,6 +1,7 @@
 package view.Model;
 
 import model.Album;
+import model.AlbumDao;
 import model.Groupe;
 
 import javax.swing.table.AbstractTableModel;
@@ -13,16 +14,26 @@ public class AlbumTableModel extends AbstractTableModel {
 
     public AlbumTableModel(ArrayList<Album> albums) {
         this.albums = albums;
+
     }
 
-     @Override
-    public Class<?> getColumnClass(int c) {
-         if (c == 0) return Integer.class; // ID
-         if (c == 1) return String.class; // Titre
-         if (c == 2) return String.class; // Nom du groupe
-         if (c == 3) return String.class; // Date de sortie
-         return null;
-     }
+//     @Override
+//    public Class<?> getColumnClass(int c) {
+//         if (c == 0) return Integer.class; // ID
+//         if (c == 1) return String.class; // Titre
+//         if (c == 2) return String.class; // Nom du groupe
+//         if (c == 3) return String.class; // Date de sortie
+//         return null;
+//     }
+
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return switch (columnIndex) {
+            case 0 -> Integer.class; // Id
+            case 1, 2, 3, 4 -> String.class; // Titre, Groupe, Membres, Date
+            default -> Object.class;
+        };
+    }
 
     @Override
     public int getRowCount() {
@@ -40,8 +51,9 @@ public class AlbumTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0: return album.getIdAlbum();
             case 1: return album.getNomAlbum();
-            case 2: return album.getGroupe();
-            case 3: return album.getRelease();
+            case 2: return album.getGroupe().getNom(); // Assuming getNomGroupe() returns the name of the group
+            case 3: return album.getGroupe().getMembreToString(); // Assuming getMembres() returns a list of members
+            case 4: return album.getReleaseString();
             default: return null;
         }
     }
@@ -65,7 +77,7 @@ public class AlbumTableModel extends AbstractTableModel {
                 album.setRelease(releaseDate);
                 break;
         }
-        fireTableCellUpdated(rowIndex, columnIndex);
+                fireTableCellUpdated(rowIndex, columnIndex);
     }
 
     @Override
