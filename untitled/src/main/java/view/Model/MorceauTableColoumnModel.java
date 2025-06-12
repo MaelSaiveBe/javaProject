@@ -1,9 +1,11 @@
 package view.Model;
 
+import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
-public class MorceauTableColoumnModel extends DefaultTableModel {
+public class MorceauTableColoumnModel extends DefaultTableColumnModel {
 
     public MorceauTableColoumnModel() {
         super();

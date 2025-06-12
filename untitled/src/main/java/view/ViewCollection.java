@@ -2,26 +2,32 @@ package view;
 
 import model.Album;
 import model.Morceau;
+import Controlleur.Controller;
 
 import java.util.ArrayList;
 
-public interface ViewCollection {
+ public interface ViewCollection {
     
     // Method to display data to the user
-    public void displayCollectionAlbums(ArrayList<Album>  Collection);
+     void displayCollectionAlbums(ArrayList<Album>  Collection);
 
-    public void displayCollectionMorceaux(ArrayList<String>  Collection);
+     void displayCollectionMorceaux(Album SelectedAlbum);
 
-    public Morceau promptForNewMorceau();
+     Morceau promptForNewMorceau();
+
+    void setController(Controller c);
+
+    void run();
 
 
+     Integer promptForMorceauId();
 
-    public Integer promptForMorceauId();
+     Integer promptForAlbumId();
 
-    public Integer promptForAlbumId();
+     Album promptForNewAlbum();
 
-    public Album promptForNewAlbum();
 
-    public void showMessage(String message);
+    //si pas le temps de faire exception methode inutiles
+     void showMessage(String message);
 
 }

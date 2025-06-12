@@ -1,11 +1,12 @@
 package view;
 
 import Controlleur.Controller;
+import model.AlbumDao;
 
 public class Main {
     public static void main(String[] args) {
-        Controller controlleur = new Controller(new FenetrePrincipale());
+        Controller controller = new Controller(new FenetrePrincipale(), new AlbumDao());
 
-        controlleur.run();
+        controller.run();
     }
 }

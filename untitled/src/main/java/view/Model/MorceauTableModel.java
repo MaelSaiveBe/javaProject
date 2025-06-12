@@ -9,6 +9,9 @@ public class MorceauTableModel extends AbstractTableModel {
 
     private ArrayList<Morceau> morceaux;
 
+    public MorceauTableModel(ArrayList<Morceau> data) {
+        morceaux = data;
+    }
     @Override
     public int getRowCount() {
         return morceaux.size();

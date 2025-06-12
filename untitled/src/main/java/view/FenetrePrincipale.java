@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import model.Album;
 import model.Morceau;
 import view.Model.AlbumTableModel;
+import view.Model.MorceauTableColoumnModel;
 import view.Model.MorceauTableModel;
 
 import javax.swing.*;
@@ -52,7 +53,9 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
     }
 
     @Override
-    public void displayCollectionMorceaux(ArrayList<String> Collection) {
+    public void displayCollectionMorceaux(Album album) {
+        trackList.setModel(new MorceauTableModel(album.getTrackList()));
+        trackList.setColumnModel(new MorceauTableColoumnModel());
 
     }
 
@@ -97,8 +100,23 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
 
     @Override
     public void showMessage(String message) {
-
+        JOptionPane.showMessageDialog(this, message,
+                "Information", JOptionPane.INFORMATION_MESSAGE);
     }
+
+    @Override
+    public void setController(Controlleur.Controller c) {
+        btnAjouterAlbum.addActionListener(c);
+        btnAjoutMorceau.addActionListener(c);
+        btnSupprimerAlbum.addActionListener(c);
+        btnSupprimerMorceau.addActionListener(c);
+    }
+
+    @Override
+    public void run() {
+        setVisible(true);
+    }
+
 }
 
 
