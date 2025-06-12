@@ -14,15 +14,13 @@ public interface ViewCollection {
 
     public Morceau promptForNewMorceau();
 
-    public Morceau promptForUpdateMorceau(String morceau);
+
 
     public Integer promptForMorceauId();
 
     public Integer promptForAlbumId();
 
     public Album promptForNewAlbum();
-
-    public Album promptForUpdateAlbum(Album album);
 
     public void showMessage(String message);
 

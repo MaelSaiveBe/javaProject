@@ -3,9 +3,12 @@ package model;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class Album {
+    static final Groupe defaultGroup = new Groupe("Default Band", new ArrayList<String>(Arrays.asList("Default Member 1", "Default Member 2")));
+
     private int idAlbum;
     private String nomAlbum;
     private ArrayList<Morceau> trackList;
@@ -43,6 +46,14 @@ public class Album {
         this.trackList = new ArrayList<>();
     }
 
+    public Album() {
+        this.idAlbum = -1; // Default value, can be set later
+        this.nomAlbum = "";
+        this.trackList = new ArrayList<>();
+        this.groupe = defaultGroup;
+        this.release = new Date(); // Default to current date
+    }
+
     public int getIdAlbum() {
         return idAlbum;
     }
@@ -71,6 +82,10 @@ public class Album {
 
     public void setRelease(Date release) {
         this.release = release;
+    }
+
+    public void setRelease(int day, int month, int year) {
+        this.release = new Date(year - 1900, month - 1, day); // Date constructor uses year since 1900 and month from 0 to 11
     }
 
     public void setNomAlbum(String nomAlbum) {
@@ -148,5 +163,9 @@ public class Album {
         return this.nomAlbum.equals(other.nomAlbum) && this.trackList.equals(other.trackList);
 
         //TODO toString()
+    }
+
+    public Integer getId() {
+        return this.idAlbum;
     }
 }

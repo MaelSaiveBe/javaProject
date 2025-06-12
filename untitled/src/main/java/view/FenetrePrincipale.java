@@ -4,6 +4,7 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import model.Album;
 import model.Morceau;
 import view.Model.AlbumTableModel;
+import view.Model.MorceauTableModel;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
     private JTable jtAlbums;
     private JButton btnAjoutMorceau;
     private JButton btnAjouterAlbum;
-    private JList trackList;
+    private JTable trackList;
     private JButton btnSupprimerMorceau;
     private JButton btnSupprimerAlbum;
 
@@ -60,34 +61,39 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         JDialogAjoutMorceau JdialogAjoutMorceau = new JDialogAjoutMorceau(this, true);
         JdialogAjoutMorceau.setVisible(true);
         Morceau morceau = JdialogAjoutMorceau.getMorceau();
-
-        return ;
+        JdialogAjoutMorceau.dispose();
+        return morceau;
     }
 
-    @Override
-    public Morceau promptForUpdateMorceau(String morceau) {
-        return ;
-    }
 
     @Override
     public Integer promptForMorceauId() {
-        return 0;
+        int index = trackList.getSelectedRow();
+        if(index == -1){
+            return null;
+        }
+        return ((MorceauTableModel) trackList.getModel()).getMorceaux(index).getId();
     }
 
     @Override
     public Integer promptForAlbumId() {
-        return 0;
+        int index = jtAlbums.getSelectedRow();
+        if(index == -1){
+            return null;
+        }
+        return ((AlbumTableModel) jtAlbums.getModel()).getAlbumAt(index).getId();
     }
 
     @Override
     public Album promptForNewAlbum() {
-        return null;
+        JDialogAjouterAlbum dialog = new JDialogAjouterAlbum(this, true);
+        dialog.setVisible(true);
+        Album album = dialog.getAlbum();
+        dialog.dispose();
+       return album;
     }
 
-    @Override
-    public Album promptForUpdateAlbum(Album album) {
-        return null;
-    }
+
 
     @Override
     public void showMessage(String message) {

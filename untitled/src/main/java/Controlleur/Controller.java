@@ -1,6 +1,7 @@
 package Controlleur;
 
 import com.formdev.flatlaf.FlatDarculaLaf;
+import model.DataAccessLayer;
 import view.FenetrePrincipale;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ public final class Controller  implements ActionListener {
 
     private FenetrePrincipale frame;
 
-    public Controller(FenetrePrincipale frame) {
+    public Controller(FenetrePrincipale frame, DataAccessLayer model) {
         try{
             UIManager.setLookAndFeel(new FlatDarculaLaf());
         } catch (Exception e) {
