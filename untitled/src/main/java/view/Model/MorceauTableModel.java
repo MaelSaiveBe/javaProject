@@ -65,4 +65,10 @@ public class MorceauTableModel extends AbstractTableModel {
     public Morceau getMorceaux(int rowIndex) {
         return morceaux.get(rowIndex);
     }
+
+    public void setMorceaux(ArrayList<Morceau> trackList) {
+        this.morceaux = trackList;
+        fireTableDataChanged();
+         // Notify the table that the data has changed
+    }
 }

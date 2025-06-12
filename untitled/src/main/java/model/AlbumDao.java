@@ -62,6 +62,27 @@ public class AlbumDao implements DataAccessLayer {
         return false;
     }
 
+    public boolean deleteTrack(int idAlbum, int idTrack) {
+       int i = 0;
+       if (collection.isEmpty()) return false;
+       for (Album a : collection) {
+           if (a.getIdAlbum() == idAlbum) {
+               for (Morceau morceau : a.getTrackList()) {
+                    if (morceau.getId() == idTrack) {
+                        a.getTrackList().remove(morceau);
+                        a.setIds();
+                        //a.removeTrack(idTrack);
+                        //System.out.println("Tracklist: "+ collection.get(idAlbum).getTrackList().size() );
+                        // Assuming removeTrack is defined in Album
+                        return true;
+                         // Track not found
+                    }
+                }
+            }
+        }
+        return false; // Album not found or track not found
+    }
+
     @Override
     public Album getAlbumById(int id) {
         for (Album album : collection) {

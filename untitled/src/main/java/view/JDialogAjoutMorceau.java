@@ -28,7 +28,9 @@ public class JDialogAjoutMorceau extends JDialog{
             public void actionPerformed(ActionEvent e) {
                 String titre = tfTitreMorceau.getText();
                 int duree = Integer.parseInt(tfDureeMorceau.getText());
+                morceauAjouter = new Morceau(titre, duree);
                 System.out.println("titre : " + titre + " duree : " + duree);
+
                 dispose();
             }
         });

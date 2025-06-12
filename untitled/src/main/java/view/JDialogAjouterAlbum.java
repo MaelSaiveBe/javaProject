@@ -23,7 +23,7 @@ public class JDialogAjouterAlbum extends JDialog {
     public JDialogAjouterAlbum(JFrame parent, boolean modal) {
 
         super(parent,"Ajouter un Album", modal);
-        setSize(400, 300);
+        setSize(600, 300);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setContentPane(JpanelAjouterAlbum);

@@ -1,16 +1,13 @@
 package view;
 
-import com.formdev.flatlaf.FlatDarculaLaf;
 import model.Album;
 import model.Morceau;
 import view.Model.AlbumTableColumnModel;
 import view.Model.AlbumTableModel;
-import view.Model.MorceauTableColoumnModel;
+import view.Model.MorceauTableColumnModel;
 import view.Model.MorceauTableModel;
 
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import java.util.ArrayList;
 
 public class FenetrePrincipale extends JFrame implements ViewCollection {
@@ -34,7 +31,7 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
 
         super("Fenetre Principale");
         setContentPane(modelFenetrePrincipale);
-        setSize(500,500);
+        setSize(800,500);
         //place la fenetre au centre a l'éxecution(Comportement par défaut fait apparaite dans le
         //                                                                  coin suppérieur gauche)
         setLocationRelativeTo(null);
@@ -48,6 +45,9 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
 
         jtAlbums.setModel(new AlbumTableModel(new ArrayList<>()));
         jtAlbums.setColumnModel(new AlbumTableColumnModel());
+
+        trackList.setModel(new MorceauTableModel(new ArrayList<>()));
+        trackList.setColumnModel(new MorceauTableColumnModel());
         jtAlbums.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     public static void main(String[] args){
@@ -71,15 +71,15 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
 
     @Override
     public void displayCollectionAlbums(ArrayList<Album> Collection) {
-        jtAlbums.setModel(new AlbumTableModel(Collection));
-        jtAlbums.setColumnModel(new AlbumTableColumnModel());
+        AlbumTableModel albumTableModel = (AlbumTableModel) jtAlbums.getModel();
+        albumTableModel.setAlbums(Collection);
+
     }
 
     @Override
     public void displayCollectionMorceaux(Album album) {
-        trackList.setModel(new MorceauTableModel(album.getTrackList()));
-        trackList.setColumnModel(new MorceauTableColoumnModel());
-
+        MorceauTableModel model = (MorceauTableModel) trackList.getModel();
+        model.setMorceaux(album.getTrackList());
     }
 
     @Override
@@ -135,6 +135,7 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         btnSupprimerAlbum.addActionListener(c);
         btnSupprimerMorceau.addActionListener(c);
         jtAlbums.getModel().addTableModelListener(c);
+        jtAlbums.addMouseListener(c);
         System.out.println("Ajout du TableModelListener : " + c);
 
     }
@@ -143,6 +144,36 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
     public void run() {
         setVisible(true);
     }
+
+    public void RefreshTracksOnClick(){
+        int index = jtAlbums.getSelectedRow();
+        if(index != -1) {
+            AlbumTableModel model = (AlbumTableModel) jtAlbums.getModel();
+            Album album = model.getAlbumAt(index);
+            displayCollectionMorceaux(album);
+        }else{
+            showMessage("Aucun Album Selectionné");
+            displayCollectionMorceaux(null);
+        }
+    }
+
+
+//    public void RefreshTracksOnClick() {
+//        int index = jtAlbums.getSelectedRow();
+//        if (index >= 0) {
+//            AlbumTableModel model = (AlbumTableModel) jtAlbums.getModel();
+//            Album album = model.getAlbumAt(index);
+//            if (album != null) {
+//                displayCollectionMorceaux(album);
+//                trackList.revalidate();
+//                trackList.repaint();
+//            } else {
+//                showMessage("Aucun album sélectionné.");
+//            }
+//        } else {
+//            showMessage("Veuillez sélectionner un album.");
+//        }
+//    }
 
 }
 

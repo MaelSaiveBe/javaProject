@@ -1,13 +1,11 @@
 package view.Model;
 
 import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 
-public class MorceauTableColoumnModel extends DefaultTableColumnModel {
+public class MorceauTableColumnModel extends DefaultTableColumnModel {
 
-    public MorceauTableColoumnModel() {
+    public MorceauTableColumnModel() {
         super();
         int[] taillesColonnes = {10, 100, 50};
         String[] nomsColonnes = {"Id", "Titre", "durée"};

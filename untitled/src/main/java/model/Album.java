@@ -120,6 +120,7 @@ public class Album {
 
 
     public int addTrack(Morceau morceau) {
+        morceau.setId(trackList.size() + 1); // Set the ID based on the current size of the trackList
         this.trackList.add(morceau);
 
         return trackList.size();
@@ -136,7 +137,15 @@ public class Album {
         if(this.trackList.contains(morceau)){
             this.trackList.remove(morceau);
         }
+        this.setIds();
         return trackList.size();
+    }
+
+    public void setIds() {
+        if(this.trackList == null) return;
+        for(int i = 0; i < trackList.size(); i++) {
+            trackList.get(i).setId(i + 1); // Réajuste les IDs des morceaux restants
+        }
     }
 
     /**

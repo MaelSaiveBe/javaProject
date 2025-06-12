@@ -67,9 +67,16 @@ public class AlbumTableModel extends AbstractTableModel {
             case 1: album.setNomAlbum((String) value); break;
             case 2:
                 Groupe groupe = new Groupe((String) value);
+                groupe.setMembres(album.getGroupe().getMembres());
                 album.setGroupe(groupe);
                 break;
             case 3:
+                String membersStr = (String) value;
+                String[] membersArray = membersStr.split(", ");
+                Groupe groupeWithMembers = new Groupe(album.getGroupe().getNom(), new ArrayList<>(java.util.Arrays.asList(membersArray)));
+                album.setGroupe(groupeWithMembers);
+                break;
+            case 4:
                 String dateStr = (String) value;
 
                 ArrayList<String> dateFragment = new ArrayList<>(java.util.Arrays.asList(dateStr.split("/")));
@@ -87,5 +94,10 @@ public class AlbumTableModel extends AbstractTableModel {
 
     public Album getAlbumAt(int index) {
         return albums.get(index);
+    }
+
+    public void setAlbums(ArrayList<Album> collection) {
+        albums = collection;
+        fireTableDataChanged();
     }
 }

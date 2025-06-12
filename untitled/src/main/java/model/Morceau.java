@@ -67,4 +67,16 @@ public class Morceau {
                 this.titre.equals(other.titre);
     }
 
+    @Override
+    public String toString() {
+        return "Morceau{" +
+                "id=" + id +
+                ", titre='" + titre + '\'' +
+                ", duree=" + dureeToString() +
+                '}';
+    }
+
+    public void setId(int i) {
+        this.id = i;
+    }
 }
