@@ -7,16 +7,18 @@ public class Main {
 
 
     public static void main(String[] args) {
-        // Create an instance of the controller with the main window
-        Controlleur.Controller controller = new Controlleur.Controller(new view.FenetrePrincipale(),
-                new AlbumDao());
 
-        //set look and feel
         try{
             UIManager.setLookAndFeel(new FlatDarculaLaf());
         } catch (Exception e) {
             System.err.println("Erreur lors du chargement du thème FlatLaf");
         }
+        // Create an instance of the controller with the main window
+        Controlleur.Controller controller = new Controlleur.Controller(new view.FenetrePrincipale(),
+                new AlbumDao());
+
+        //set look and feel
+
         // Start the application
         controller.run();
     }

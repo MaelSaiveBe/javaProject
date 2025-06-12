@@ -51,11 +51,7 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         jtAlbums.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
     public static void main(String[] args){
-        try{
-            UIManager.setLookAndFeel(new FlatDarculaLaf());
-        } catch (Exception e) {
-            System.err.println("Erreur lors du chargement du thème FlatLaf");
-        }
+
         new FenetrePrincipale();
 //        Authenticator mapAuthenticator = new MapAuthenticator();
 //        boolean isAuthenticatedWithMap = mapAuthenticator.authenticate("utilisateur1", "motdepasse1");
