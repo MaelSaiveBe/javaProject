@@ -1,7 +1,7 @@
 package view;
 
-import model.Album;
-import model.Groupe;
+import model.metier.Album;
+import model.metier.Groupe;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

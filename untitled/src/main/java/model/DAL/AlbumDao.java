@@ -1,4 +1,7 @@
-package model;
+package model.DAL;
+
+import model.metier.Album;
+import model.metier.Morceau;
 
 import java.util.ArrayList;
 
@@ -51,19 +54,9 @@ public class AlbumDao implements DataAccessLayer {
         return false;
     }
 
-    @Override
-    public boolean deleteAlbum(Album a) {
-        for (Album album : collection) {
-            if (album.getIdAlbum() == a.getIdAlbum()) {
-                collection.remove(album);
-                return true;
-            }
-        }
-        return false;
-    }
 
     public boolean deleteTrack(int idAlbum, int idTrack) {
-       int i = 0;
+
        if (collection.isEmpty()) return false;
        for (Album a : collection) {
            if (a.getIdAlbum() == idAlbum) {

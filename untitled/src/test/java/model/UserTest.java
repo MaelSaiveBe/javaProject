@@ -1,5 +1,8 @@
 package model;
 
+import model.metier.Album;
+import model.metier.Groupe;
+import model.metier.User;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

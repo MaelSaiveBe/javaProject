@@ -1,6 +1,6 @@
 package view.Model;
 
-import model.Morceau;
+import model.metier.Morceau;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

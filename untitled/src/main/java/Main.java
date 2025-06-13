@@ -1,7 +1,9 @@
 import com.formdev.flatlaf.FlatDarculaLaf;
-import model.AlbumDao;
+import model.DAL.AlbumDao;
+import model.DAL.AlbumDaoSerializable;
 
 import javax.swing.*;
+import java.io.File;
 
 public class Main {
 
@@ -14,8 +16,11 @@ public class Main {
             System.err.println("Erreur lors du chargement du thème FlatLaf");
         }
         // Create an instance of the controller with the main window
+        //Controlleur.Controller controller = new Controlleur.Controller(new view.FenetrePrincipale(),
+         //       new AlbumDao());
+        File file = new File("C:\\Users\\saive\\Desktop\\collection.ser");
         Controlleur.Controller controller = new Controlleur.Controller(new view.FenetrePrincipale(),
-                new AlbumDao());
+                new AlbumDaoSerializable(file));
 
         //set look and feel
 

@@ -1,7 +1,7 @@
 package view;
 
-import model.Album;
-import model.Morceau;
+import model.metier.Album;
+import model.metier.Morceau;
 import view.Model.AlbumTableColumnModel;
 import view.Model.AlbumTableModel;
 import view.Model.MorceauTableColumnModel;
@@ -49,6 +49,8 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         trackList.setModel(new MorceauTableModel(new ArrayList<>()));
         trackList.setColumnModel(new MorceauTableColumnModel());
         jtAlbums.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+
     }
     public static void main(String[] args){
 
@@ -136,6 +138,7 @@ public class FenetrePrincipale extends JFrame implements ViewCollection {
         btnSupprimerMorceau.addActionListener(c);
         jtAlbums.getModel().addTableModelListener(c);
         jtAlbums.addMouseListener(c);
+        this.addWindowListener(c);
         System.out.println("Ajout du TableModelListener : " + c);
 
     }

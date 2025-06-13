@@ -7,7 +7,7 @@ public class MorceauTableColumnModel extends DefaultTableColumnModel {
 
     public MorceauTableColumnModel() {
         super();
-        int[] taillesColonnes = {10, 100, 50};
+        int[] taillesColonnes = {10, 50, 20};
         String[] nomsColonnes = {"Id", "Titre", "durée"};
 
        for (int i = 0; i < taillesColonnes.length; i++) {

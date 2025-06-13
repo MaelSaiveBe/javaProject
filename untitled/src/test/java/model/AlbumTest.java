@@ -1,6 +1,9 @@
 package model;
 
 
+import model.metier.Album;
+import model.metier.Groupe;
+import model.metier.Morceau;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

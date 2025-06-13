@@ -1,9 +1,8 @@
-package model;
+package model.metier;
 
-import java.util.AbstractList;
-import java.util.Objects;
+import java.io.Serializable;
 
-public class Morceau {
+public class Morceau implements Serializable{
     private static int compteur = 0;
 
 

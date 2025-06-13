@@ -1,7 +1,7 @@
 package view;
 
-import model.Album;
-import model.Morceau;
+import model.metier.Album;
+import model.metier.Morceau;
 import Controlleur.Controller;
 
 import java.util.ArrayList;

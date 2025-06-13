@@ -1,8 +1,9 @@
-package model;
+package model.metier;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Groupe {
+public class Groupe implements Serializable {
     private String nom;
     private ArrayList<String> membres;
 

@@ -1,12 +1,12 @@
-package model;
+package model.metier;
 
 
-import java.util.AbstractList;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-public class Album {
+public class Album implements Serializable{
     static final Groupe defaultGroup = new Groupe("Default Band", new ArrayList<String>(Arrays.asList("Default Member 1", "Default Member 2")));
 
     private int idAlbum;
@@ -14,6 +14,7 @@ public class Album {
     private ArrayList<Morceau> trackList;
     private Groupe groupe;
     private Date release;
+
 
 
     public Album(String nomAlbum,
@@ -24,6 +25,7 @@ public class Album {
         this.trackList = trackList != null ? trackList : new ArrayList<>();
         this.groupe = groupe;
         this.release = release;
+
     }
 
     public Album(Album albumTest)
@@ -173,7 +175,8 @@ public class Album {
         if (obj == null)return false;
         if (getClass() != obj.getClass())return false;
         Album other = (Album) obj;
-        return this.nomAlbum.equals(other.nomAlbum) && this.trackList.equals(other.trackList);
+        return this.nomAlbum.equals(other.nomAlbum) && this.trackList.equals(other.trackList)&&
+                this.groupe.equals(other.groupe) && this.release.equals(other.release);
 
         //TODO toString()
     }

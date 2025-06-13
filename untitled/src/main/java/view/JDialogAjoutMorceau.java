@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.*;
 import com.formdev.flatlaf.FlatDarculaLaf;
-import model.Morceau;
+import model.metier.Morceau;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

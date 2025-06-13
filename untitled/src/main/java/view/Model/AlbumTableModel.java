@@ -1,8 +1,7 @@
 package view.Model;
 
-import model.Album;
-import model.AlbumDao;
-import model.Groupe;
+import model.metier.Album;
+import model.metier.Groupe;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;

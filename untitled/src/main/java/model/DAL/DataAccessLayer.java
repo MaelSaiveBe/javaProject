@@ -1,4 +1,6 @@
-package model;
+package model.DAL;
+
+import model.metier.Album;
 
 import java.util.ArrayList;
 
@@ -10,7 +12,7 @@ public interface DataAccessLayer {
     int addAlbum(Album album);
     boolean updateAlbum(Album a);
     boolean deleteAlbum(int id);
-    boolean deleteAlbum(Album a);
+    boolean deleteTrack(int idAlbum, int idTrack);
     Album getAlbumById(int id);
     ArrayList<Album> getCollection();
 }
